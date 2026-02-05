@@ -43,6 +43,8 @@ docker compose up -d --build
 
 API: `http://localhost:3000`. Swagger: **http://localhost:3000/api**. No `.env`, `PORT` altera a porta exposta.
 
+As **tabelas do banco** são criadas automaticamente na subida do container: o entrypoint executa as migrations do TypeORM antes de iniciar a API. Em ambiente local (Opção 2), rode uma vez após o build: `npm run build && npm run migration:run`.
+
 ### Opção 2: API local + MySQL e Redis no Docker
 
 1. Copiar o override para expor as portas do MySQL e Redis:  
