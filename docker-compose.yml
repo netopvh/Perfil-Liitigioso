@@ -49,10 +49,18 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    ports:
-      - "${PORT:-3000}:3000"
+    # ports:
+    #   - "${PORT:-3000}:3000"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.profile-api.rule=Host(`profile-api.lawx.ai`)"
+      - "traefik.http.routers.profile-api.entrypoints=websecure"
+      - "traefik.http.routers.profile-api.tls=true"
+      - "traefik.http.routers.profile-api.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.profile-api.loadbalancer.server.port=3000"
     networks:
       - perfil-internal
+      - traefik_proxy
 
 volumes:
   mysql_data:
@@ -61,3 +69,5 @@ volumes:
 networks:
   perfil-internal:
     driver: bridge
+  traefik_proxy:
+    external: true
