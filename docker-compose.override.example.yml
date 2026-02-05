@@ -1,0 +1,13 @@
+# Copie para docker-compose.override.yml para desenvolvimento local:
+#   cp docker-compose.override.example.yml docker-compose.override.yml
+# Assim MySQL e Redis ficam acessíveis em localhost (3306, 6379) e você
+# pode rodar a API com: npm run start:dev (e não subir o serviço app).
+# Para subir só a infra: docker compose up -d mysql redis
+
+services:
+  mysql:
+    ports:
+      - "3306:3306"
+  redis:
+    ports:
+      - "6379:6379"

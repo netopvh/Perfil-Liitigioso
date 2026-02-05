@@ -1,0 +1,59 @@
+# Dependências
+node_modules/
+
+# Build
+dist/
+build/
+*.tsbuildinfo
+
+# Ambiente
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Logs e debug
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Cobertura e testes
+coverage/
+.nyc_output/
+*.lcov
+
+# IDE e editores
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# SO
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Docker (overrides locais; cada dev pode ter o seu)
+docker-compose.override.yml
+
+# Cursor
+.cursor/
+
+# Temporários
+tmp/
+temp/
+*.tmp
+.cache/
+
+# Lockfiles opcionais (descomente se usar apenas um gerenciador)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
