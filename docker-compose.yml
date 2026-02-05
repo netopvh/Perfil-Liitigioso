@@ -53,11 +53,14 @@ services:
     #   - "${PORT:-3000}:3000"
     labels:
       - "traefik.enable=true"
+      # Router
       - "traefik.http.routers.profile-api.rule=Host(`profile-api.lawx.ai`)"
       - "traefik.http.routers.profile-api.entrypoints=websecure"
       - "traefik.http.routers.profile-api.tls=true"
       - "traefik.http.routers.profile-api.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.profile-api.loadbalancer.server.port=3000"
+      - "traefik.http.routers.profile-api.service=profile-api"
+      # Service (porta do backend)
+      - "traefik.http.services.profile-api.loadbalancer.server.port=3000"
     networks:
       - perfil-internal
       - traefik_proxy
